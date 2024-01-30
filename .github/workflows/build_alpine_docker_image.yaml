@@ -1,6 +1,6 @@
 name: build_alpine_docker_image
 run-name: Build a alpine docker image
-on: [push]
+on: workflow_dispatch
 jobs:
   build-alpine-docker-image:
     runs-on: ubuntu-latest
