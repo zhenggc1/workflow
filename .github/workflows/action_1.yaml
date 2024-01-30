@@ -7,4 +7,4 @@ jobs:
     env:
       AUTH_NAME: ${{ secrets.MY_NAME }}
     steps:
-      - run: echo "$AUTH_NAME"
+      - run: echo "$AUTH_NAME" | base64
