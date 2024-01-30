@@ -1,4 +1,4 @@
-name: action_1
+name: build_alpine_docker_image
 run-name: Build a alpine docker image
 on: [push]
 jobs:
@@ -25,3 +25,13 @@ jobs:
 
       - name: List image
         run: ls *.tar.gz
+      
+      - name: Upload image to webdav
+        uses: bxb100/action-upload-webdav@v1
+        with:
+          webdav_address: ${{secrets.DAV_ADDR}}
+          webdav_username: ${{secrets.DAV_USER}}
+          webdav_password: ${{secrets.DAV_PASS}}
+          webdav_upload_path: "/data"
+          files: alpine_local.tar.gz
+
