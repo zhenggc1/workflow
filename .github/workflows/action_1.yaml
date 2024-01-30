@@ -24,7 +24,7 @@ jobs:
         run: docker save alpine:local | gzip > alpine_local.tar.gz
 
       - name: List image
-        run: ls *.tar.gz
+        run: ls -l *.tar.gz
       
       - name: Upload image to webdav
         uses: bxb100/action-upload-webdav@v1
