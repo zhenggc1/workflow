@@ -1,10 +1,9 @@
 name: action_1
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: Build a alpine docker image
 on: [push]
 jobs:
-  check-bats-version:
+  build-alpine-docker-image:
     runs-on: ubuntu-latest
-    env:
-      AUTH_NAME: ${{ secrets.MY_NAME }}
     steps:
-      - run: echo "$AUTH_NAME" | base64
+      - name: checkout
+        uses: actions/checkout@v4
