@@ -17,7 +17,7 @@ jobs:
             -ip-tiny -iptables -ip6tables -dnsmasq -ppp -ppp-mod-pppoe -iw -iwinfo 
             -wpad-basic-mbedtls -odhcpd-ipv6only -odhcp6c -dropbear
           profile: rpi
-          rootfs: 800
+          rootfs-size: 800
           disabled-services: firewall
 
       - name: List image
