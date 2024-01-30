@@ -19,3 +19,9 @@ jobs:
           push: false
           tags: |
             alpine:local
+
+      - name: Save image
+        uses: docker save alpine:local | gzip > alpine_local.tar.gz
+
+      - name: List image
+        uses: ls *.tar.gz
