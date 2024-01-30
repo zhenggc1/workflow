@@ -35,4 +35,4 @@ jobs:
           secret_access_key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           bucket: image
           file: alpine_local.tar.gz
-          destination: /docker
+          destination: docker/alpine_local.tar.gz
