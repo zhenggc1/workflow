@@ -28,11 +28,11 @@ jobs:
         run: docker images && ls -l *.tar.gz
       
       - name: Upload image to cloudflare
-        uses: magicwallet/r2-upload@main
+        uses: randomairborne/r2-release@v1.0.2
         with:
           endpoint: ${{secrets.R2_END_POINT}}
-          access_key_id: ${{ secrets.R2_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          accesskeyid: ${{ secrets.R2_ACCESS_KEY_ID }}
+          secretaccesskey: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           bucket: image
           file: alpine_local.tar.gz
-          destination: docker/alpine_local.tar.gz
+          destination: /docker/alpine_local.tar.gz
