@@ -21,7 +21,7 @@ jobs:
             alpine:local
 
       - name: Save image
-        uses: docker save alpine:local | gzip > alpine_local.tar.gz
+        run: docker save alpine:local | gzip > alpine_local.tar.gz
 
       - name: List image
-        uses: ls *.tar.gz
+        run: ls *.tar.gz
