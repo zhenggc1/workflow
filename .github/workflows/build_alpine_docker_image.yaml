@@ -30,7 +30,7 @@ jobs:
       - name: Upload image to cloudflare
         uses: magicwallet/r2-upload@main
         with:
-          endpoint:${{secrets.R2_END_POINT}}
+          endpoint: ${{secrets.R2_END_POINT}}
           access_key_id: ${{ secrets.R2_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           bucket: image
