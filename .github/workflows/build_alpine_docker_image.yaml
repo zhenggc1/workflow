@@ -35,4 +35,3 @@ jobs:
           webdav_password: ${{secrets.DAV_PASS}}
           webdav_upload_path: "/data"
           files: alpine_local.tar.gz
-
