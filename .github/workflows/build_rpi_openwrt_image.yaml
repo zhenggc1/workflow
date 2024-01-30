@@ -13,8 +13,9 @@ jobs:
         with:
           image: bcm27xx-bcm2708
           openwrt-version: 23.05.2
-          packages: vim zerotier tmux tcpdump netcat ip-full ss nftables openssh-server |
-            -ip-tiny -iptables -ip6tables -dnsmasq -ppp -ppp-mod-pppoe -iw -iwinfo -wpad-basic-mbedtls -odhcpd-ipv6only -odhcp6c -dropbear
+          packages: vim zerotier tmux tcpdump netcat ip-full ss nftables openssh-server 
+            -ip-tiny -iptables -ip6tables -dnsmasq -ppp -ppp-mod-pppoe -iw -iwinfo 
+            -wpad-basic-mbedtls -odhcpd-ipv6only -odhcp6c -dropbear
           profile: rpi
           rootfs: 800
           disabled-services: firewall
