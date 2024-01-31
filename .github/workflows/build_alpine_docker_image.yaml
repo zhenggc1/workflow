@@ -8,3 +8,9 @@ jobs:
       docker_file_path: .
       docker_tag: alpine:local
       docker_image_name: apline_local
+    secrets:
+      R2_END_POINT: ${{secrets.R2_END_POINT}}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+
+

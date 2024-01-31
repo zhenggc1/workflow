@@ -12,6 +12,16 @@ on:
       docker_image_name:
         required: true
         type: string
+    secrets:
+      R2_END_POINT:
+        required: true
+        type: string
+      R2_ACCESS_KEY_ID:
+        required: true
+        type: string
+      R2_SECRET_ACCESS_KEY:
+        required: true
+        type: string
 
 jobs:
   build-alpine-docker-image:
