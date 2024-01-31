@@ -1,0 +1,39 @@
+name: build_openwrt_image
+run-name: Build a Openwrt image
+on: 
+  workflow_call:
+    inputs:
+      openwrt_image:
+        required: true
+        type: string
+      openwrt_version:
+        required: true
+        type: string
+      openwrt_profile:
+        required: true
+        type: string
+      openwrt_root_size:
+        required: true
+        type: number
+
+jobs:
+  build-openwrt-rpi-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      
+      - name: Build openwrt image
+        uses: izer-xyz/openwrt-imagebuilder-action@v6
+        with:
+          image: ${{inputs.openwrt_image}}
+          openwrt-version: ${{inputs.openwrt_version}}
+          packages: vim zerotier tmux tcpdump netcat ip-full ss nftables openssh-server 
+            -ip-tiny -iptables -ip6tables -dnsmasq -ppp -ppp-mod-pppoe -iw -iwinfo 
+            -wpad-basic-mbedtls -odhcpd-ipv6only -odhcp6c -dropbear
+          profile: ${{inputs.openwrt_profile}}
+          rootfs-size: ${{inputs.openwrt_root_size}}
+          disabled-services: firewall
+
+      - name: List image
+        run: ls  -l bin/*.img.gz
