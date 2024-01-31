@@ -3,7 +3,7 @@ run-name: Build a alpine docker image
 on: workflow_dispatch
 jobs:
   call-docker-build:
-    uses: zhenggc1/workflow/.github/workflows/docker_image.yml@main
+    uses: zhenggc1/workflow/.github/workflows/docker_image.yaml@main
     with:
       docker_file_path: .
       docker_tag: alpine:local
