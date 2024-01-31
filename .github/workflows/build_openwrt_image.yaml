@@ -1,4 +1,4 @@
-name: build_openwrt_image
+name: template_of_build_openwrt_image
 run-name: Build a Openwrt image
 on: 
   workflow_call:

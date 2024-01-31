@@ -1,4 +1,4 @@
-name: build_docker_image
+name: template_of_build_docker_image
 run-name: Build a docker image
 on: 
   workflow_call:
