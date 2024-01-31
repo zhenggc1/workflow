@@ -1,4 +1,4 @@
-name: build_alpine_docker_image
+name: build_alpine_python_image
 run-name: Build a alpine docker image with python
 on: workflow_dispatch
 jobs:
