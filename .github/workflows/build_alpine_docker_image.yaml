@@ -2,37 +2,9 @@ name: build_alpine_docker_image
 run-name: Build a alpine docker image
 on: workflow_dispatch
 jobs:
-  build-alpine-docker-image:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      
-      - name: Setup Docker buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64
-          push: false
-          load: true
-          tags: |
-            alpine:local
-
-      - name: Save image
-        run: docker save alpine:local | gzip > alpine_local.tar.gz
-
-      - name: List image
-        run: docker images && ls -l *.tar.gz
-      
-      - name: Upload image to cloudflare
-        uses: randomairborne/r2-release@v1.0.2
-        with:
-          endpoint: ${{secrets.R2_END_POINT}}
-          accesskeyid: ${{ secrets.R2_ACCESS_KEY_ID }}
-          secretaccesskey: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          bucket: image
-          file: alpine_local.tar.gz
-          destination: /docker/alpine_local.tar.gz
+  call-docker-build:
+    uses: zhenggc1/workflow/.github/workflows/docker_image.yml@main
+    with:
+      docker_file_path: .
+      docker_tag: alpine:local
+      docker_image_name: apline_local
