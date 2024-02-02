@@ -1,0 +1,17 @@
+name: test_github_output
+run-name: Test Github Output
+on: workflow_dispatch
+
+jobs:
+  test-github-outpu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output
+        id: output
+        run: echo "a=b">>$GITHUB_OUTPUT
+          echo "c=d">>$GITHUB_OUTPUT
+
+      - name: echo
+        run: echo ${{steps.output.outputs.a}}
+          echo ${{steps.output.outputs.c}}
+
