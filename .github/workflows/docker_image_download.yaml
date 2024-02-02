@@ -18,11 +18,12 @@ jobs:
       
       - name: print env
         id: tag_name
-        run: echo ${{env.docker_tag}} | awk -F'/' '{print $2}' | awk -F'_' '{print "tag_name="$1":"$2}' >>$GITHUB_OUTPUT
+        run: echo ${{env.docker_tag}} | awk -F'/' '{print $2}' | 
+          awk -F'_' '{if(NF==3){print "tag_name="$1"/"$2":"$3}else{print "tag_name="$1":"$2}}' >>$GITHUB_OUTPUT
 
       - name: print env
         id: pkg_name
-        run: echo ${{env.docker_tag}} | awk -F'/' '{print $2}' | awk -F'_' '{print "pkg_name="$1"_"$2}' >>$GITHUB_OUTPUT
+        run: echo ${{env.docker_tag}} | awk -F'/' '{print $2}' >>$GITHUB_OUTPUT
 
 
       - name: Setup Docker buildx
