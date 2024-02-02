@@ -23,7 +23,7 @@ jobs:
 
       - name: print env
         id: pkg_name
-        run: echo ${{env.docker_tag}} | awk -F'/' '{print $2}' >>$GITHUB_OUTPUT
+        run: echo ${{env.docker_tag}} | awk -F'/' '{print "pkg_name="$2}' >>$GITHUB_OUTPUT
 
 
       - name: Setup Docker buildx
