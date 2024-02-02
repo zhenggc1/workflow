@@ -6,10 +6,12 @@ jobs:
   test-github-outpu:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
       - name: output
         id: output
-        run: echo "a=b">>$GITHUB_OUTPUT
-          echo "c=d">>$GITHUB_OUTPUT
+        run: cat kv.txt >> $GITHUB_OUTPUT
 
       - name: echo
         run: echo ${{steps.output.outputs.a}}
