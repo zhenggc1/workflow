@@ -11,11 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       docker_tag: ${{github.ref_name}}
-      docker_image_name: ${{github.event.ref}}
 
     steps:
       - name: checkout
         uses: actions/checkout@v4
       
       - name: print env
-        run: echo ${{env.docker_tag}} && echo ${{env.docker_image_name}}
+        run: echo ${{env.docker_tag}} | awk -F '/' '{print $2}'
