@@ -1,6 +1,10 @@
 name: test_github_output
 run-name: Test Github Output
-on: workflow_dispatch
+
+on: 
+  push:
+    paths:
+      - 'test/**.env'
 
 jobs:
   test-github-outpu:
@@ -11,9 +15,6 @@ jobs:
 
       - name: output
         id: output
-        run: cat kv.txt >> $GITHUB_OUTPUT
+        run: echo ${{push.head_commit.added}}
 
-      - name: echo
-        run: echo ${{steps.output.outputs.a}} && 
-          echo ${{steps.output.outputs.c}}
 
