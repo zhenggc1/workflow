@@ -17,4 +17,4 @@ jobs:
         uses: actions/checkout@v4
       
       - name: print env
-        run: echo ${{env.docker_tag}} | awk -F'_' '{print $1":"$2}'
+        run: echo ${{env.docker_tag}} | awk -F'/' '{print $2}' | awk -F'_' '{print $1":"$2}'
