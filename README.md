@@ -6,7 +6,7 @@
 
 ## 3. workflow for download docker image and package it to a gzip file
 
-1. git branch for trigger download docker image
+### git branch for trigger download docker image
 
     git branch releases/codercom_code-server_bookworm
     git checkout releases/codercom_code-server_bookworm
