@@ -15,6 +15,6 @@ jobs:
 
       - name: output
         id: output
-        run: echo ${{github.event}}
+        run: echo ${{github.event.commits}}
 
 
