@@ -17,6 +17,6 @@ jobs:
         id: output
         run: echo ${{github.event.commits}} && 
           echo ${{github.event.head_commit}} &&
-          echo ${{github.event.commits[0].message}}
+          echo ${{github.event.commits[0].modified[0]}}
 
 
