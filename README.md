@@ -2,7 +2,7 @@
 
 ## 1. workflow for build openwrt image
 
-### build a rpi openwrt image and upload it to cloudflare
+### build a rpi openwrt image
     name: build_rpi_openwrt_image
     run-name: Build a Openwrt image for rpi
     on: workflow_dispatch
