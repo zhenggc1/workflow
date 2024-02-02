@@ -14,6 +14,6 @@ jobs:
         run: cat kv.txt >> $GITHUB_OUTPUT
 
       - name: echo
-        run: echo ${{steps.output.outputs.a}}
+        run: echo ${{steps.output.outputs.a}} && 
           echo ${{steps.output.outputs.c}}
 
