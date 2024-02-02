@@ -15,6 +15,6 @@ jobs:
 
       - name: output
         id: output
-        run: echo ${{push.head_commit.added}}
+        run: echo ${{github.push.head_commit.added}}
 
 
