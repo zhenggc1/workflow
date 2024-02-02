@@ -18,3 +18,12 @@ jobs:
       
       - name: print env
         run: echo ${{env.docker_tag}} | awk -F'/' '{print $2}' | awk -F'_' '{print $1":"$2}'
+
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: download image
+        run: docker pull $(echo ${{env.docker_tag}} | awk -F'/' '{print $2}' | awk -F'_' '{print $1":"$2}')
+
+      - name: list image
+        run: docker images
