@@ -12,10 +12,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: output
         id: output
-        run: pwd && git log -n 1 && (git log -n 2 --format=%H)
+        run: (git log -2 --format=%H | xargs git diff | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}' | xargs cat)>> $GITHUB_OUTPUT
 
       - name: test_output
         run: echo $GITHUB_OUTPUT && echo ${{steps.output.outputs.a}}
