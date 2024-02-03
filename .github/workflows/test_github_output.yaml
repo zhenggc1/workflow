@@ -15,7 +15,7 @@ jobs:
 
       - name: output
         id: output
-        run: /usr/bin/git log -2 --format=%H | xargs git diff
+        run: pwd && git log -n 1 && (/usr/bin/git log -2 --format=%H | xargs git diff)
 
       - name: test_output
         run: echo $GITHUB_OUTPUT && echo ${{steps.output.outputs.a}}
