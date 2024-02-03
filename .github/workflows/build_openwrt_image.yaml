@@ -11,10 +11,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: output
         id: output
-        run: (git log -p -1 | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}')
+        run: (git log -p -1 | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}' | xargs cat)>> $GITHUB_OUTPUT
       
       - name: Build openwrt image
         uses: izer-xyz/openwrt-imagebuilder-action@v6
