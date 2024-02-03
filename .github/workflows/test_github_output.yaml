@@ -15,8 +15,9 @@ jobs:
 
       - name: output
         id: output
-        run: echo ${{github.event.commits}} && 
-          echo ${{github.event.head_commit}} &&
-          echo ${{github.event.commits[0].modified[0]}}
+        run: git log -n 2 | grep commit | awk '{print $2}' | xargs git diff | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}' | xargs cat >> $GITHUB_OUTPUTS
+
+      - name: test_output
+        run: echo ${{steps.output.outputs.a}}
 
 
