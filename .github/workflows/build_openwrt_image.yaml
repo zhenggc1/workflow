@@ -1,4 +1,4 @@
-name: template_of_build_openwrt_image
+name: build_openwrt_image
 run-name: Build a Openwrt image
 on: 
   push:
@@ -6,7 +6,7 @@ on:
       - 'openwrt_build/**.env'
 
 jobs:
-  build-openwrt-rpi-image:
+  build-openwrt-image:
     runs-on: ubuntu-latest
     steps:
       - name: checkout

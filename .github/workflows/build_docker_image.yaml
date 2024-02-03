@@ -1,4 +1,4 @@
-name: template_of_build_docker_image
+name: build_docker_image
 run-name: Build a docker image
 on: 
   push:
@@ -6,7 +6,7 @@ on:
       - 'docker_build/**.env'
 
 jobs:
-  build-alpine-docker-image:
+  build-docker-image:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
