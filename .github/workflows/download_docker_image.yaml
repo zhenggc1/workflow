@@ -1,4 +1,4 @@
-name: docker_image_download_and_upload_to_cf
+name: docker_image_download
 run-name: download a docker image and update to cloudflare
 
 on: 
