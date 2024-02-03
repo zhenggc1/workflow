@@ -1,47 +1,31 @@
 # workflows
 
+## 0. howto using
+> workflow read a file in this repository as config an run on config file push.
+
 ## 1. workflow for build openwrt image
 
-### build a rpi openwrt image
+### build a rpi openwrt image, read a config file on directory openwrt_build, here is a example openwrt_build/rpi.env
 ```
-name: build_rpi_openwrt_image
-run-name: Build a Openwrt image for rpi
-on: workflow_dispatch
-  jobs:
-    call-docker-build:
-      uses: zhenggc1/workflow/.github/workflows/build_openwrt_image.yaml@main
-    with:
-       openwrt_image: bcm27xx-bcm2708
-       openwrt_version: 23.05.2
-       openwrt_profile: rpi
-       openwrt_root_size: 800
+openwrt_image= bcm27xx-bcm2708
+openwrt_version= 23.05.2
+openwrt_profile= rpi
+openwrt_root_size= 800
 ```
 
 ## 2. workflow for build docker image
 
-### build a docker image and upload it to cloudflare
+### build a docker image and upload it to cloudflare, read a config file on directory docker_build, here is a example docker_build/alpine_local.env
 ```
-name: build_alpine_python_image
-run-name: Build a alpine docker image with python
-on: workflow_dispatch
-jobs:
-  call-docker-build:
-    uses: zhenggc1/workflow/.github/workflows/docker_image.yaml@main
-    with:
-      docker_file_path: alpine_python
-      docker_tag: alpine:python
-      docker_image_name: alpine_python
-    secrets:
-      R2_END_POINT: ${{secrets.R2_END_POINT}}
-      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+docker_file_path= docker_build/alpine_python
+docker_tag= alpine:python
+docker_image_name= alpine_python
 ```
 
 ## 3. workflow for download docker image and package it to a gzip file
 
-### git branch for trigger download docker image
+### git branch for trigger download docker image,read a config file on directory docker_download, here is a example docker_download/alpine_local.env
 ```
-git branch releases/codercom_code-server_bookworm
-git checkout releases/codercom_code-server_bookworm
-git push -u origin releases/codercom_code-server_bookworm
+tag_name=alpine:latest
+pkg_name=alpint_latest
 ```
