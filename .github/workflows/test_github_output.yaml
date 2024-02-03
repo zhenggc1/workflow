@@ -15,9 +15,9 @@ jobs:
 
       - name: output
         id: output
-        run: $(git log -n 2 | grep commit | awk '{print $2}' | xargs git diff) &&
-          $(git log -n 2 | grep commit | awk '{print $2}' | xargs git diff | grep diff | awk '{print $NF}') &&
-          $(git log -n 2 | grep commit | awk '{print $2}' | xargs git diff | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}' | xargs cat)
+        run: (git log -n 2 | grep commit | awk '{print $2}' | xargs git diff) &&
+          (git log -n 2 | grep commit | awk '{print $2}' | xargs git diff | grep diff | awk '{print $NF}') &&
+          (git log -n 2 | grep commit | awk '{print $2}' | xargs git diff | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}' | xargs cat)
 
       - name: test_output
         run: echo $GITHUB_OUTPUT && echo ${{steps.output.outputs.a}}
