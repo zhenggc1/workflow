@@ -14,7 +14,7 @@ jobs:
 
       - name: output
         id: output
-        run: (git log -p -1 | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}' | xargs cat)>> $GITHUB_OUTPUT
+        run: (git log -p -1 | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}')
       
       - name: Build openwrt image
         uses: izer-xyz/openwrt-imagebuilder-action@v6
