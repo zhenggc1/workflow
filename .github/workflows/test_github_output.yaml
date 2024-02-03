@@ -15,7 +15,7 @@ jobs:
 
       - name: output
         id: output
-        run: git log -2 --format=%H | xargs git diff | grep diff
+        run: git log -2 --format=%H | xargs git diff
 
       - name: test_output
         run: echo $GITHUB_OUTPUT && echo ${{steps.output.outputs.a}}
