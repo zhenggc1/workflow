@@ -15,7 +15,7 @@ jobs:
 
       - name: output
         id: output
-        run: $(git log -n 2 | grep commit | awk '{print $2}' | xargs git diff | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}' | xargs cat) >> $GITHUB_OUTPUTS
+        run: $(git log -n 2 | grep commit | awk '{print $2}' | xargs git diff | grep diff | awk '{print $NF}' | awk -F'/' '{print $2"/"$3}' | xargs cat) >> $GITHUB_OUTPUT
 
       - name: test_output
         run: echo ${{steps.output.outputs.a}}
